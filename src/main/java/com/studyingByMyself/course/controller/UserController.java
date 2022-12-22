@@ -1,6 +1,7 @@
 package com.studyingByMyself.course.controller;
 
 import com.studyingByMyself.course.entities.User;
+import com.studyingByMyself.course.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,23 +15,17 @@ import java.util.List;
 @RequestMapping("/users")
 public class UserController {
 
-   /* @GetMapping
+    @Autowired
+    private UserRepository userRepository;
+
+    /*@GetMapping
     public ResponseEntity<User> endpointGetToReturnOnlyOneUser(Integer id) {
         return null;
     }*/
 
     @GetMapping
     public ResponseEntity<List<User>> endpointGetToReturnAllUsers() {
-        User user = new User(1, "Maria", "maria@gmail.com", "5199999999", "1234");
-        User user1 = new User(2, "Maria2", "maria2@gmail.com", "5199999999", "12344");
-        User user2 = new User(3, "Maria3", "maria3@gmail.com", "5199999999", "12343");
-
-        List<User> users = new ArrayList<>();
-
-        users.add(user);
-        users.add(user1);
-        users.add(user2);
-
+        List<User> users = userRepository.findAll();
         return ResponseEntity.ok().body(users);
     }
 }
