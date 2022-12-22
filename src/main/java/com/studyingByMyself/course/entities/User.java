@@ -1,9 +1,15 @@
 package com.studyingByMyself.course.entities;
 
+import jakarta.persistence.*;
+
 import java.util.Objects;
 
+@Entity
+@Table(name = "tb_user")
 public class User {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String name;
     private String email;
@@ -61,7 +67,7 @@ public class User {
     }
 
     @Override
-    public boolean equals(Object other ) {
+    public boolean equals(Object other) {
         if (this == other) return true;
         if (other == null || getClass() != other.getClass()) return false;
         User user = (User) other;
