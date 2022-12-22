@@ -1,5 +1,6 @@
 package com.studyingByMyself.course.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.time.Instant;
@@ -21,7 +22,11 @@ public class Order {
 
     public Order() {}
 
-
+    public Order(Integer id, Instant moment, User client) {
+        this.id = id;
+        this.moment = moment;
+        this.client = client;
+    }
 
     public Integer getId() {
         return id;
