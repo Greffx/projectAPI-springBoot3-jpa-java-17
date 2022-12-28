@@ -7,7 +7,5 @@ import java.util.List;
 public interface OrderServiceInterface {
 
     public Order findOneOrderById(Integer id);
-
-    public List<Order> findAllOrders();
-
-    }
+    public List<Order> findAll();
+}

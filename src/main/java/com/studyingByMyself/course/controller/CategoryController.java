@@ -1,7 +1,7 @@
 package com.studyingByMyself.course.controller;
 
-import com.studyingByMyself.course.entities.Order;
-import com.studyingByMyself.course.services.OrderService;
+import com.studyingByMyself.course.entities.Category;
+import com.studyingByMyself.course.services.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,19 +12,19 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/orders")
-public class OrderController {
+@RequestMapping("/categories")
+public class CategoryController {
 
     @Autowired
-    private OrderService orderService;
+    private CategoryService categoryService;
 
     @GetMapping(value = "/{id}")
-    public ResponseEntity<Order> findOneOrderById(@PathVariable Integer id) {
-        return ResponseEntity.ok().body(orderService.findOneOrderById(id));
+    public ResponseEntity<Category> findById(@PathVariable Integer id) {
+        return ResponseEntity.ok().body(categoryService.findById(id));
     }
 
-    @GetMapping()
-    public ResponseEntity<List<Order>> findAllOrders() {
-        return ResponseEntity.ok().body(orderService.findAll());
+    @GetMapping
+    public ResponseEntity<List<Category>> findAll() {
+        return ResponseEntity.ok().body(categoryService.findAll());
     }
 }

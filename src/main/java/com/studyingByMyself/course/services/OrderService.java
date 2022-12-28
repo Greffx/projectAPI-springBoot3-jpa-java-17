@@ -19,11 +19,7 @@ public class OrderService  implements OrderServiceInterface {
         return  orderOptional.get();
     }
 
-    public List<Order> findAllOrders() {
+    public List<Order> findAll() {
         return orderRepository.findAll();
     }
-
-
-
-
 }
