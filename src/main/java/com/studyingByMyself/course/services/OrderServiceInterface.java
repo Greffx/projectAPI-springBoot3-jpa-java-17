@@ -6,6 +6,6 @@ import java.util.List;
 
 public interface OrderServiceInterface {
 
-    public Order findOneOrderById(Integer id);
+    public Order findById(Integer id);
     public List<Order> findAll();
 }

@@ -14,7 +14,7 @@ public class UserService implements UserServiceInterface {
     @Autowired
     private UserRepository userRepository;
 
-    public User findUserById(Integer id) {
+    public User findById(Integer id) {
         Optional<User> user = userRepository.findById(id);
         return user.get();
     }

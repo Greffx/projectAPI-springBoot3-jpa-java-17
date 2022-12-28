@@ -14,7 +14,7 @@ public class OrderService  implements OrderServiceInterface {
     @Autowired
     private OrderRepository orderRepository;
 
-    public Order findOneOrderById(Integer id) {
+    public Order findById(Integer id) {
         Optional<Order> orderOptional = orderRepository.findById(id);
         return  orderOptional.get();
     }

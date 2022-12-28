@@ -20,7 +20,7 @@ public class UserController {
 
     @GetMapping(value = "/{id}")
     public ResponseEntity<User> endpointGetToReturnOnlyOneUser(@PathVariable Integer id) {
-        return ResponseEntity.ok().body(userService.findUserById(id));
+        return ResponseEntity.ok().body(userService.findById(id));
     }
 
     @GetMapping

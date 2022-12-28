@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class CategoryService {
+public class CategoryService implements CategoryServiceInterface{
 
     @Autowired
     private CategoryRepository categoryRepository;
