@@ -1,14 +1,8 @@
 package com.studyingByMyself.course.config;
 
-import com.studyingByMyself.course.entities.Category;
-import com.studyingByMyself.course.entities.Order;
-import com.studyingByMyself.course.entities.Product;
-import com.studyingByMyself.course.entities.User;
+import com.studyingByMyself.course.entities.*;
 import com.studyingByMyself.course.entities.enums.OrderStatus;
-import com.studyingByMyself.course.repository.CategoryRepository;
-import com.studyingByMyself.course.repository.OrderRepository;
-import com.studyingByMyself.course.repository.ProductRepository;
-import com.studyingByMyself.course.repository.UserRepository;
+import com.studyingByMyself.course.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -30,6 +24,8 @@ public class ListOfPeopleAndThingsForTestsConfig {
     private CategoryRepository categoryRepository;
     @Autowired
     private ProductRepository productRepository;
+    @Autowired
+    private OrderItemRepository orderItemRepository;
 
     @Bean
     void listOfObjectsToTest() {
@@ -67,6 +63,14 @@ public class ListOfPeopleAndThingsForTestsConfig {
         product5.getCategories().add(category2);
 
         productRepository.saveAll(Arrays.asList(product1, product2, product3, product4, product5));
+
+        OrderItem orderItem1 = new OrderItem(order1, product1, 2, product1.getPrice());
+        OrderItem orderItem2 = new OrderItem(order1, product3, 1, product3.getPrice());
+        OrderItem orderItem3 = new OrderItem(order2, product3, 2, product3.getPrice());
+        OrderItem orderItem4 = new OrderItem(order3, product5, 2, product5.getPrice());
+
+        orderItemRepository.saveAll(Arrays.asList(orderItem1, orderItem2, orderItem3, orderItem4));
+
 
     }
 }
