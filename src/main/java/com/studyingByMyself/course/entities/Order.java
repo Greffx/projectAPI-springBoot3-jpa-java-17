@@ -1,6 +1,5 @@
 package com.studyingByMyself.course.entities;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.studyingByMyself.course.entities.enums.OrderStatus;
 import jakarta.persistence.*;
 
@@ -24,7 +23,7 @@ public class Order {
     private User client;
 
     @OneToMany(mappedBy = "id.order")
-    private Set<OrderItem> items = new HashSet<>();
+    private Set<OrderItem> orders = new HashSet<>();
 
     public Order() {
     }
@@ -69,7 +68,7 @@ public class Order {
     }
 
     public Set<OrderItem> getItems() {
-        return items;
+        return orders;
     }
 
     @Override

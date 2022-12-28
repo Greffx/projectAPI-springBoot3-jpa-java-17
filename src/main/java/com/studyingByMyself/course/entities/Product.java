@@ -1,5 +1,6 @@
 package com.studyingByMyself.course.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.math.BigDecimal;
@@ -19,6 +20,9 @@ public class Product {
     @ManyToMany
     @JoinTable(name = "tb_product_category", joinColumns = @JoinColumn(name = "product_id"), inverseJoinColumns = @JoinColumn(name = "category_id"))
     private Set<Category> categories = new HashSet<>();
+
+    @OneToMany(mappedBy = "id.product")
+    private Set<OrderItem> items = new HashSet<>();
 
     public Product() {
     }
@@ -73,6 +77,14 @@ public class Product {
 
     public Set<Category> getCategories() {
         return categories;
+    }
+    @JsonIgnore
+    public Set<Order> getOrders() {
+        Set<Order> orderSet = new HashSet<>();
+        for (OrderItem orderItem : items) {
+            orderSet.add(orderItem.getOrder());
+        }
+        return orderSet;
     }
 
     @Override
