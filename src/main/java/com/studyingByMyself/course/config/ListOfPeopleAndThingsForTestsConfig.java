@@ -71,6 +71,11 @@ public class ListOfPeopleAndThingsForTestsConfig {
 
         orderItemRepository.saveAll(Arrays.asList(orderItem1, orderItem2, orderItem3, orderItem4));
 
+        Payment payment1 = new Payment(null, Instant.parse("2019-07-21T06:42:10Z"), order2);
+        order2.setPayment(payment1);
+
+        orderRepository.save(order2);
+
 
     }
 }
