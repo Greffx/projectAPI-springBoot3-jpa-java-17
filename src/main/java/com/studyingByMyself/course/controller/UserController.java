@@ -4,11 +4,10 @@ import com.studyingByMyself.course.entities.User;
 import com.studyingByMyself.course.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import java.net.URI;
 import java.util.List;
 
 @RestController
@@ -27,5 +26,10 @@ public class UserController {
     public ResponseEntity<List<User>> endpointGetToReturnAllUsers() {
         List<User> users = userService.findAll();
         return ResponseEntity.ok().body(users);
+    }
+
+    @PostMapping
+    public ResponseEntity<User> insert(@RequestBody User user) {
+        return ResponseEntity.created(ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(userService.insert(user)).toUri()).body(userService.insert(user));
     }
 }

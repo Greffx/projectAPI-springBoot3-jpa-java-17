@@ -14,11 +14,13 @@ public class OrderService  implements OrderServiceInterface {
     @Autowired
     private OrderRepository orderRepository;
 
+    @Override
     public Order findById(Integer id) {
         Optional<Order> orderOptional = orderRepository.findById(id);
         return  orderOptional.get();
     }
 
+    @Override
     public List<Order> findAll() {
         return orderRepository.findAll();
     }

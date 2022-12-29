@@ -9,16 +9,18 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class ProductService implements  ProductServiceInterface{
+public class ProductService implements ProductServiceInterface {
 
     @Autowired
     private ProductRepository ProductRepository;
 
+    @Override
     public Product findById(Integer id) {
         Optional<Product> optional = ProductRepository.findById(id);
         return optional.get();
     }
 
+    @Override
     public List<Product> findAll() {
         return ProductRepository.findAll();
     }

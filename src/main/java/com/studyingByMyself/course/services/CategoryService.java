@@ -14,11 +14,13 @@ public class CategoryService implements CategoryServiceInterface{
     @Autowired
     private CategoryRepository categoryRepository;
 
+    @Override
     public Category findById(Integer id) {
         Optional<Category> optional = categoryRepository.findById(id);
         return optional.get();
     }
 
+    @Override
     public List<Category> findAll() {
         return categoryRepository.findAll();
     }

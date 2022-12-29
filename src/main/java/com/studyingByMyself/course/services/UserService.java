@@ -14,12 +14,20 @@ public class UserService implements UserServiceInterface {
     @Autowired
     private UserRepository userRepository;
 
+    @Override
     public User findById(Integer id) {
         Optional<User> user = userRepository.findById(id);
         return user.get();
     }
 
+    @Override
     public List<User> findAll() {
         return userRepository.findAll();
     }
+
+    @Override
+    public User insert(User user) {
+        return userRepository.save(user);
+    }
+
 }
