@@ -60,6 +60,10 @@ public class OrderItem {
         this.price = price;
     }
 
+    public BigDecimal getSubTotal() {
+        return getPrice().multiply(new BigDecimal(getQuantity()));
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

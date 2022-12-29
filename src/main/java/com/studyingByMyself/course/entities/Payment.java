@@ -1,5 +1,6 @@
 package com.studyingByMyself.course.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import org.aspectj.weaver.ast.Or;
 

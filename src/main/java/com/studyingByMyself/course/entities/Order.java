@@ -3,6 +3,7 @@ package com.studyingByMyself.course.entities;
 import com.studyingByMyself.course.entities.enums.OrderStatus;
 import jakarta.persistence.*;
 
+import java.math.BigDecimal;
 import java.time.Instant;
 import java.util.HashSet;
 import java.util.Objects;
@@ -80,6 +81,14 @@ public class Order {
 
     public Set<OrderItem> getItems() {
         return orders;
+    }
+
+    public BigDecimal getTotal() {
+        BigDecimal sum = new BigDecimal(0);
+        for (OrderItem orderItem : getItems()) {
+            sum = sum.add(orderItem.getSubTotal());
+        }
+        return sum;
     }
 
     @Override
