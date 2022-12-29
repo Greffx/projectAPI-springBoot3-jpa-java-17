@@ -30,4 +30,9 @@ public class UserService implements UserServiceInterface {
         return userRepository.save(user);
     }
 
+    @Override
+    public void delete(Integer id) {
+        userRepository.deleteById(id);
+    }
+
 }
