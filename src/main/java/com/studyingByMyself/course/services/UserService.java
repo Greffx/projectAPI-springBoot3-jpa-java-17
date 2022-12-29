@@ -35,4 +35,17 @@ public class UserService implements UserServiceInterface {
         userRepository.deleteById(id);
     }
 
+    @Override
+    public User update(Integer id, User user) {
+        User entityMonitored = userRepository.getReferenceById(id);
+        updateToANewUser(entityMonitored, user);
+        return userRepository.save(entityMonitored);
+    }
+
+    private void updateToANewUser(User entityMonitored, User updatedUser) {
+        entityMonitored.setName(updatedUser.getName());
+        entityMonitored.setEmail(updatedUser.getEmail());
+        entityMonitored.setPhone(updatedUser.getPhone());
+    }
+
 }

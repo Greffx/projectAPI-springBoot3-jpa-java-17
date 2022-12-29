@@ -10,4 +10,5 @@ public interface UserServiceInterface {
     public List<User> findAll();
     public User insert(User user);
     public void delete(Integer id);
+    public  User update(Integer id, User user);
 }
