@@ -2,6 +2,10 @@ package com.studyingByMyself.course.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
+import org.hibernate.validator.constraints.Length;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,16 +18,25 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+    @NotNull
+    @NotEmpty
     private String name;
+    @Email
+    @NotEmpty
     private String email;
+    @NotNull
+    @NotEmpty
     private String phone;
+    @NotNull
+    @Length(min = 4)
     private String password;
 
     @JsonIgnore
     @OneToMany(mappedBy = "client")
     private List<Order> orders = new ArrayList<>();
 
-    public User() {}
+    public User() {
+    }
 
     public User(Integer id, String name, String email, String phone, String password) {
         this.id = id;
